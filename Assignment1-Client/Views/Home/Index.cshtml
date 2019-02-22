@@ -1,0 +1,55 @@
+﻿@model Assignment1_Client.Models.PurchaseOrder
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h3>Purchase Order System</h3>
+        
+        @Html.ActionLink("Create New PO", "Create")
+        <br/>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.POMaster.FirstOrDefault().PONO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.POMaster.FirstOrDefault().SUPLNO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.POMaster.FirstOrDefault().PODATE)
+                </th>
+            </tr>
+
+            @foreach (var item in Model.POMaster)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PONO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SUPLNO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PODATE)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PONO.ToString().Trim() })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</body>
+</html>
